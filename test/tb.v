@@ -46,4 +46,16 @@ module tb ();
       .rst_n  (rst_n)     // not reset
   );
 
+initial clk = 0;
+always #5 clk = ~clk;
+
+initial begin
+ ui_in = 8'd0;
+ uio_in = 8'd0;
+ ena = 1'b1;
+ rst_n = 1'b0;
+ #12 rst_n = 1'b1;
+ #200 $finish;
+end
+
 endmodule
